@@ -35,3 +35,9 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Terragrunt files
+**/.terragrunt-cache/*
+
+# Ignore generated .tg.lock.hcl files
+*.tg.lock.hcl
