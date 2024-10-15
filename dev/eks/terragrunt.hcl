@@ -13,7 +13,7 @@ include "env" {
 }
 
 inputs = {
-  eks_version = "1.26"
+  eks_version = "1.29"
   env         = include.env.locals.env
   eks_name    = "demo"
   subnet_ids  = dependency.vpc.outputs.private_subnet_ids
@@ -28,6 +28,12 @@ inputs = {
         min_size     = 0
       }
     }
+  }
+
+  node_iam_policies = {
+    1 = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+    2 = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+    3 = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   }
 }
 

@@ -1,5 +1,5 @@
 terraform {
-  source = "git@github.com:panchanandevops/infrastructure-modules.git//vpc?ref=vpc-v0.0.2"
+  source = "git@github.com:panchanandevops/infrastructure-modules.git//vpc?ref=vpc-v0.0.1"
 }
 
 include "root" {
@@ -14,8 +14,6 @@ include "env" {
 
 inputs = {
   env = include.env.locals.env
-
-  azs = ["us-east-1a", "us-east-1b"]
 
   private_subnets = {
     "10.0.0.0/19"  = "us-east-1a"
