@@ -1,5 +1,5 @@
 terraform {
-  source = "git@github.com:panchanandevops/terraform-aws-iam.git//iam?ref=iam-v0.0.3"
+  source = "git@github.com:panchanandevops/terraform-aws-iam.git//iam?ref=iam-v0.0.4"
 }
 
 include "root" {
@@ -15,7 +15,7 @@ include "env" {
 inputs = {
   env         = include.env.locals.env
   eks_name    = dependency.eks.outputs.eks_name
-  account_id  = local.account_id
+  account_id  = get_aws_account_id()
 }
 
 dependency "eks" {
@@ -24,12 +24,4 @@ dependency "eks" {
   mock_outputs = {
     eks_name = "dam"
   }
-}
-
-
-data "aws_caller_identity" "current" {}
-
-# Define local variables
-locals {
-  account_id  = data.aws_caller_identity.current.account_id  
 }
