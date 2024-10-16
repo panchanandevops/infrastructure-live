@@ -15,10 +15,32 @@ include "env" {
 inputs = {
   env      = include.env.locals.env
   eks_name = dependency.eks.outputs.eks_name
-  enable_cluster_autoscaler = true
-  enable_metrics_server = true
-  enable_aws_lbc = true
-  enable_external_nginx = true
+
+  cluster_autoscaler = {
+    enable              = true
+    region              = "us-east-1"
+    helm_chart_version  = "9.37.0"
+    path_to_values_file = "${path.module}/values/cluster_autoscaler.yaml"
+  }
+
+  metrics_server = {
+    enable              = true
+    helm_chart_version  = "3.12.1"
+    path_to_values_file = "${path.module}/values/metrics_server.yaml"
+  }
+
+  aws_lbc = {
+    enable              = true
+    helm_chart_version  = "1.7.2"
+    path_to_values_file = "${path.module}/values/aws_lbc.yaml"
+  }
+
+  external_nginx_ingress_controller = {
+    enable              = true
+    helm_chart_version  = "4.10.1"
+    path_to_values_file = "${path.module}/values/nginx_ingress_controller.yaml"
+  }
+
 }
 
 dependency "eks" {
