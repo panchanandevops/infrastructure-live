@@ -1,5 +1,5 @@
 terraform {
-  source = "git@github.com:panchanandevops/terraform-aws-iam.git//iam?ref=iam-v0.0.2"
+  source = "git@github.com:panchanandevops/terraform-aws-iam.git//iam?ref=iam-v0.0.3"
 }
 
 include "root" {
@@ -15,6 +15,7 @@ include "env" {
 inputs = {
   env         = include.env.locals.env
   eks_name    = dependency.eks.outputs.eks_name
+  account_id  = local.account_id
 }
 
 dependency "eks" {
@@ -25,14 +26,10 @@ dependency "eks" {
   }
 }
 
-generate "helm_provider" {
-  path      = "helm-provider.tf"
-  if_exists = "overwrite_terragrunt"
-  contents  = <<EOF
+
 data "aws_caller_identity" "current" {}
 
-provider "aws" {
-  region  = "us-east-1"
-}
-EOF
+# Define local variables
+locals {
+  account_id  = data.aws_caller_identity.current.account_id  
 }
