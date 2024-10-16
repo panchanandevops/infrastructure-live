@@ -21,6 +21,18 @@ dependency "eks" {
   config_path = "../eks"
 
   mock_outputs = {
-    eks_name = "demo"
+    eks_name = "dam"
   }
+}
+
+generate "helm_provider" {
+  path      = "helm-provider.tf"
+  if_exists = "overwrite_terragrunt"
+  contents  = <<EOF
+data "aws_caller_identity" "current" {}
+
+provider "aws" {
+  region  = "us-east-1"
+}
+EOF
 }

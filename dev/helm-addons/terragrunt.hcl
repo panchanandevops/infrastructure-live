@@ -20,25 +20,25 @@ inputs = {
     enable              = true
     region              = "us-east-1"
     helm_chart_version  = "9.37.0"
-    path_to_values_file = "${path.module}/values/cluster_autoscaler.yaml"
+    path_to_values_file = "${get_terragrunt_dir()}/values/cluster_autoscaler.yaml"
   }
 
   metrics_server = {
     enable              = true
     helm_chart_version  = "3.12.1"
-    path_to_values_file = "${path.module}/values/metrics_server.yaml"
+    path_to_values_file = "${get_terragrunt_dir()}/values/metrics_server.yaml"
   }
 
   aws_lbc = {
     enable              = true
     helm_chart_version  = "1.7.2"
-    path_to_values_file = "${path.module}/values/aws_lbc.yaml"
+    path_to_values_file = "${get_terragrunt_dir()}/values/aws_lbc.yaml"
   }
 
   external_nginx_ingress_controller = {
     enable              = true
     helm_chart_version  = "4.10.1"
-    path_to_values_file = "${path.module}/values/nginx_ingress_controller.yaml"
+    path_to_values_file = "${get_terragrunt_dir()}/values/nginx_ingress_controller.yaml"
   }
 
 }
