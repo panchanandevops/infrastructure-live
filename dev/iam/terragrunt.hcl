@@ -1,5 +1,5 @@
 terraform {
-  source = "git@github.com:panchanandevops/infrastructure-modules.git//iam?ref=iam-v0.0.1"
+  source = "git@github.com:panchanandevops/terraform-aws-iam.git//iam?ref=iam-v0.0.1"
 }
 
 include "root" {

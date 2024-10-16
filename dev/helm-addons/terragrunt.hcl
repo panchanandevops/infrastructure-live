@@ -1,5 +1,5 @@
 terraform {
-  source = "git@github.com:panchanandevops/infrastructure-modules.git//helm-addons?ref=helm-v0.0.2"
+  source = "git@github.com:panchanandevops/terraform-aws-helm-addons.git//helm-addons?ref=helm-v0.0.1"
 }
 
 include "root" {
