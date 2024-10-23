@@ -144,21 +144,6 @@ remote_state {
 
 This configuration ensures that the state is stored in the `panchanandevops-tf-state` bucket and is locked using DynamoDB to prevent multiple operations on the state at once.
 
----
-
-## Helm Addons Details
-
-The following table provides an overview of the Helm-based addons deployed through this infrastructure:
-
-| Addon Name                  | Helm Chart Version | Enabled | Values File                            |
-|-----------------------------|--------------------|---------|----------------------------------------|
-| AWS Load Balancer Controller | 1.7.2              | Yes     | `values/aws_lbc.yaml`                  |
-| Cluster Autoscaler           | 9.37.0             | Yes     | `values/cluster_autoscaler.yaml`       |
-| Metrics Server               | 3.12.1             | Yes     | `values/metrics_server.yaml`           |
-| NGINX Ingress Controller      | 4.10.1             | Yes     | `values/nginx_ingress_controller.yaml` |
-
----
-
 
 
 ## How to Deploy
@@ -187,3 +172,8 @@ To apply the infrastructure changes:
 terragrunt run-all apply
 ```
 
+To destroy the infrastructure changes:
+
+```bash
+terragrunt run-all destroy
+```
