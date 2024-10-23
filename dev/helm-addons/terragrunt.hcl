@@ -1,5 +1,5 @@
 terraform {
-  source = "git@github.com:panchanandevops/terraform-aws-helm-addons.git//helm-addons?ref=helm-v0.0.3"
+  source = "git@github.com:panchanandevops/terraform-aws-helm-addons.git//helm-addons?ref=helm-v0.0.4"
 }
 
 include "root" {
@@ -33,6 +33,7 @@ inputs = {
     enable              = true
     helm_chart_version  = "1.7.2"
     path_to_values_file = "${get_terragrunt_dir()}/values/aws_lbc.yaml"
+    path_to_policy_file = "${get_terragrunt_dir()}/policy/AWSLoadBalancerController.json"
   }
 
   external_nginx_ingress_controller = {
